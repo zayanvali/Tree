@@ -34,14 +34,26 @@ def add_new_node(root, value):
         root.left_node = add_new_node(root.left_node, value)
     return root
 
-
-root = tree(5)
-root.left_node = tree(4)
-root.left_node.left_node = tree(9)
-root.right_node = tree(8)
-root.right_node.left_node = tree(7)
-root.right_node.right_node = tree(6)
+def search(root, value):
+    if root.data == value:
+        return True
+    elif root.data > value and root.left_node != None:
+        return search(root.left_node, value)
+    elif root.data < value and root.right_node != None:
+        return search(root.right_node, value)
+    else:
+        return False
+root = tree(9)
+root.left_node = tree(5)
+root.left_node.left_node = tree(4)
+root.right_node = tree(20)
+root.right_node.left_node = tree(17)
+root.right_node.right_node = tree(23)
 root = add_new_node(root, 3)
 inorder_traversal(root)
 #preorder_traversal(root)
 #postorder_traversal(root)
+if search(root, 27):
+    print("The value is present in the tree")
+else:
+    print("The value doesn't exist in the tree")
