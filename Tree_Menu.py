@@ -15,33 +15,33 @@ def Insert(root, k):
     if root == None:
         return tree(k)
     if root.data > k:
-        root.leftChild = Insert(root.rightChild, k)
+        root.left_node = Insert(root.right_node, k)
     else:
-        root.rightCHild = Insert(root.rightChild, k)
+        root.right_node = Insert(root.right_node, k)
     return root
 
 def InorderSuccesor(root):
     current = root
-    while current.leftChild is not None:
-        current = current.leftChild
+    while current.left_node is not None:
+        current = current.left_node
     return current
 
 def delete(root, key):
     if root is None:
         return root
     if key < root.data:
-        root.leftChild = delete(root.leftChild, key)
+        root.leftChild = delete(root.left_node, key)
     elif key > root.data:
-        root.rightChild = delete(root.rightChild, key)
+        root.rightChild = delete(root.right_node, key)
     else:
         #Root has only 1 child
-        if root.leftChild is None:
-            temp = root.rightChild
+        if root.left_node is None:
+            temp = root.right_node
             root = None
             return temp
         #Root has only 1 child
-        elif root.rightChild is None:
-            temp = root.leftChild
+        elif root.right_node is None:
+            temp = root.left_node
             root = None
             return temp
         #Root has 2 children
@@ -51,7 +51,7 @@ def delete(root, key):
             t = root.data
             root.data = temp.data
             temp.data = t
-            root.rightChild = delete(root.rightChild, temp.data)
+            root.right_node = delete(root.rightChild, temp.data)
 
 def search(root, value):
     if root.data == value:
