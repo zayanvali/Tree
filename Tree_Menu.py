@@ -60,7 +60,7 @@ def search(root, value):
     else:
         return False
 root = tree(9)
-for value in [7, 1, 4, 8, 6, 9, 3]:
+for value in [7, 1, 4, 8, 6, 5, 3]:
     root = Insert(root, value)
 
 number = int(input("Please enter a number from 1-4:\n 1. inorder_traversal \n 2. Insertion \n 3. Deletion \n 4. Searching \n Enter your answer: "))
@@ -71,14 +71,16 @@ if number == 1:
 elif number == 2:
     value = int(input("Enter the value to insert: "))
     root = Insert(root, value)
-
+    inorder_traversal(root)
+    print()
 elif number == 3:
     key = int(input("Enter the value to delete: "))
     answer = delete(root, key)
-    print(answer)
-    
+    print(f"\n Tree after deleting {key}: ")
+    inorder_traversal(answer)
+    print()
 elif number == 4:
-    value = int(input("Enter the value to search"))
+    value = int(input("Enter the value to search: "))
     answer = search(root, value)
     print(f"found:{answer}")
 
